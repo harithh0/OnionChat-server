@@ -1,12 +1,8 @@
 import json
 
 from api.models import AppUser, ChatRoom, Friendship, Message
-from api.serializers import (
-    ChatRoomSerializer,
-    FriendshipSerializer,
-    MessageSerializer,
-    UserSerializer,
-)
+from api.serializers import (ChatRoomSerializer, FriendshipSerializer,
+                             MessageSerializer, UserSerializer)
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from django.contrib.auth import authenticate
@@ -15,12 +11,10 @@ from django.shortcuts import HttpResponse, get_object_or_404, render
 from django.views.decorators.http import require_POST
 from rest_framework import generics, status  # returns status codes 200, 404
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.authtoken.models import Token  # creates a token for the user
-from rest_framework.decorators import (
-    api_view,
-    authentication_classes,
-    permission_classes,
-)
+from rest_framework.authtoken.models import \
+    Token  # creates a token for the user
+from rest_framework.decorators import (api_view, authentication_classes,
+                                       permission_classes)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -213,7 +207,6 @@ def accept_friend_request(request):
         return Response(status=status.HTTP_200_OK)
 
     else:
-        print("hell nah")
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -245,7 +238,6 @@ def reject_friend_request(request):
         return Response(status=status.HTTP_200_OK)
 
     else:
-        print("hell nah")
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
